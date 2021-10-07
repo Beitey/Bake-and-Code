@@ -1,0 +1,32 @@
+---
+title: "Preguntas iniciales"
+author: "Francisco Vega"
+date: "07-10-2021"
+output: pdf_document
+---
+
+## Pregunta 1:
+
+¿Cuales son los alimentos preferidos?
+
+## Pregunta 2:
+
+¿Que relación hay entre los alimentos mas vendidos y el horario?
+
+## Pregunta 3:
+
+¿Que modelo puede predecir los pedidos que se realizarán en cierto 
+rango horario?
+
+## Pregunta 4:
+
+¿En que horarios la gente prefiere productos dulces por sobre los productos 
+salados?
+
+## Pregunta 5:
+
+¿Cual es el rango de horario en el que hay más pedidos?
+
+## Pregunta 6:
+
+¿Que día hay mas ganancias?
