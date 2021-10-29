@@ -1,11 +1,11 @@
 # Librerias ---------------------------------------------------------------
 require(tidyverse)
-
+require(scales)
 
 
 # Abriendo base de datos: -------------------------------------------------
 
-dat = rio::import("Data Set/Bakery Sales.csv") %>% tibble()
+dat = rio::import("Data_Set/Bakery Sales.csv") %>% tibble()
 
 dat = dat[!is.na(dat$total),] #Se eliminan ventas inexistentes 
 
