@@ -10,7 +10,7 @@ Aquí se guarda la base de datos utilizada, la cual consta de 2 archivos .csv qu
 
 Aquí se guardarán los gráficos que resumirán los datos.
 
-## Productos :cookie:
+## [Productos :cookie:](https://beitey.github.io/Bake-and-Code/Productos/ "Productos")
 
 Aquí se subirán los productos finales como informes.
 
