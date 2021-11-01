@@ -1,4 +1,4 @@
-\#Gráficos
+# Gráficos
 
 Los siguientes gráficos nos ayudarán a visualizar mejor lo que pasa con los datos:
 

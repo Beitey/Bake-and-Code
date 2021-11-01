@@ -14,6 +14,6 @@ Aquí se guardarán los gráficos que resumirán los datos.
 
 Aquí se subirán los productos finales como informes.
 
-## Códigos :bagel:
+## [Códigos :bagel:](https://github.com/Beitey/Bake-and-Code/tree/main/Codigos "Code")
 
 Estos son los códigos utilizados para hacer el análisis de la base de datos. (Este README.md se irá actualizando para explicar los diferentes códigos que se utilizarán)
