@@ -79,12 +79,26 @@ Ganancias_por_dia
 
 
 # Creo la columna Hora para analizar las horas mas concurridas:
+horas = seq(18, 21, by = 1)
+dat_h = dat %>% mutate(Hora = str_sub(dat$datetime, start = 12L, end = 13L))
 
-dat = dat %>% mutate(Hora = str_sub(dat$datetime, start = 12L, end = 13L))
-    
-grafico_2 = dat %>%
+
+# Para lograr un eje x continuo se agregan datos fantasmas que no afectan 
+## a los resultados
+length(dat_h)
+View(dat_h)
+
+vec = vector("numeric", 27)
+vec[2] = "Tues" ; vec[4] = ""; vec[c(5:27)] = NA
+for (i in horas){
+  datos_fantasma = c(vec, "Mar", i)
+  dat_h = rbind(dat_h, datos_fantasma)
+}
+
+# Gráfico de ganancias por horas:
+grafico_2 = dat_h %>%
   ggplot() +
-  aes(x = Hora, weight = total) +
+  aes(x = Hora) +
   geom_bar(fill = "#6510a1") +
   labs(title = "Ganancias por Horario",
        subtitle = "Ganancia en Wones Sur Coreanos",
@@ -95,8 +109,3 @@ grafico_2 = dat %>%
   ggx::gg_("Center the title please") 
 
 grafico_2 + scale_y_continuous(labels = comma)
-
-
-
-
-
