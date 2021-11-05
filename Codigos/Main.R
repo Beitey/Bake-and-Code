@@ -1,7 +1,7 @@
 # Librerias ---------------------------------------------------------------
 require(tidyverse)
 require(scales)
-
+require(ggthemes)
 
 # Abriendo base de datos: -------------------------------------------------
 
@@ -12,26 +12,51 @@ dat = dat[!is.na(dat$total),] #Se eliminan ventas inexistentes
 View(dat)
 
 dias_ordenados = c('Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun')
+dias_esp_ord = c('Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom')
+
+# Funciones ---------------------------------------------------------------
+
+esp_days = function(datos, dias_ordenados, dias_esp_ord){
+  dias_español = c()
+  for (dia in datos){
+    pos = which(dia == dias_ordenados)
+    dias_español = c(dias_español, dias_esp_ord[pos])
+    }
+  return(dias_español)
+}
+
+
+
+# Transformaciones --------------------------------------------------------
+
+dat = dat %>% mutate(dias = esp_days(dat$`day of week`, dias_ordenados, dias_esp_ord))
+
+# Gráficos ----------------------------------------------------------------
+
 
 # Gráfico de Ventas por día
 dat  %>%
-  ggplot() + aes(x = factor(`day of week`, level = dias_ordenados)) + 
+  ggplot() + aes(x = factor(dias, level = dias_esp_ord)) + 
   geom_bar(stat = "count", fill = "#336688") +
-  theme_minimal() +
-  labs(title = "Numero de ventas por dias de la semana",
-       y = "Numero de Ventas",
-       x = "Dias de la Semana") + ggx::gg_("Center the title please")
+  labs(title = "Número de ventas por días de la semana",
+       y = "Número de Ventas",
+       x = "Días de la Semana")+ 
+  ggthemes::theme_base() +
+  ggx::gg_("Center the title please")
 
 # Gráfico de Ganancias por día
 
 grafico_1 = dat  %>%
   ggplot() +
-  aes(x = factor(`day of week`, level = dias_ordenados), weight = total) +
+  aes(x = factor(dias, level = dias_esp_ord), weight = total) +
   geom_bar(fill = "#900000") +
-  labs(title = "Ganancias por dias de la semana",
+  labs(title = "Ganancias por días de la semana",
+       subtitle = "Ganancia en Wones Sur Coreanos",
        y = "Monto ganado",
-       x = "Dias de la Semana") +
-  theme_minimal() + ggx::gg_("Center the title please") 
+       x = "Días de la Semana") +
+  ggthemes::theme_base() +
+  theme(plot.subtitle = element_text(hjust = 0.5)) + 
+  ggx::gg_("Center the title please") 
 
 grafico_1 + scale_y_continuous(labels = comma)
   
@@ -61,10 +86,13 @@ grafico_2 = dat %>%
   ggplot() +
   aes(x = Hora, weight = total) +
   geom_bar(fill = "#6510a1") +
-  labs(title = "Ganancias por Hora",
+  labs(title = "Ganancias por Horario",
+       subtitle = "Ganancia en Wones Sur Coreanos",
        y = "Monto ganado",
        x = "Hora del día") +
-  theme_minimal() + ggx::gg_("Center the title please")
+  ggthemes::theme_base() +
+  theme(plot.subtitle = element_text(hjust = 0.5)) + 
+  ggx::gg_("Center the title please") 
 
 grafico_2 + scale_y_continuous(labels = comma)
 
