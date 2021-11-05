@@ -4,12 +4,12 @@ Los siguientes gráficos nos ayudarán a visualizar mejor lo que pasa con los da
 
 Gráfico 1:
 
-<img src="grafico-1_numero-de-ventas-por-dia-de-semana.png" width="546"/>
+![](grafico-1_numero-de-ventas-por-dia-de-semana.png)
 
 Gráfico 2:
 
-<img src="grafico-2_ganancias-por-dia-de-semana.png" width="547"/>
+![](grafico-2_ganancias-por-dia-de-semana.png)
 
 Gráfico 3:
 
-<img src="grafico-3_ganancias-por-hora.png" width="548"/>
+![](grafico-3_ganancias-por-hora.png)
