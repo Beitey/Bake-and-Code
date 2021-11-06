@@ -9,8 +9,6 @@ dat = rio::import("Data_Set/Bakery Sales.csv") %>% tibble()
 
 dat = dat[!is.na(dat$total),] #Se eliminan ventas inexistentes 
 
-View(dat)
-
 dias_ordenados = c('Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun')
 dias_esp_ord = c('Lun', 'Mar', 'Mie', 'Jue', 'Vie', 'Sab', 'Dom')
 
@@ -35,7 +33,7 @@ dat = dat %>% mutate(dias = esp_days(dat$`day of week`, dias_ordenados, dias_esp
 
 
 # Gráfico de Ventas por día
-dat  %>%
+grafico_1 = dat  %>%
   ggplot() + aes(x = factor(dias, level = dias_esp_ord)) + 
   geom_bar(stat = "count", fill = "#336688") +
   labs(title = "Número de ventas por días de la semana",
@@ -46,7 +44,7 @@ dat  %>%
 
 # Gráfico de Ganancias por día
 
-grafico_1 = dat  %>%
+grafico_2 = dat  %>%
   ggplot() +
   aes(x = factor(dias, level = dias_esp_ord), weight = total) +
   geom_bar(fill = "#900000") +
@@ -58,7 +56,7 @@ grafico_1 = dat  %>%
   theme(plot.subtitle = element_text(hjust = 0.5)) + 
   ggx::gg_("Center the title please") 
 
-grafico_1 + scale_y_continuous(labels = comma)
+grafico_2 = grafico_2 + scale_y_continuous(labels = comma)
   
   
 # Se Verifican sus valores:
@@ -85,8 +83,6 @@ dat_h = dat %>% mutate(Hora = str_sub(dat$datetime, start = 12L, end = 13L))
 
 # Para lograr un eje x continuo se agregan datos fantasmas que no afectan 
 ## a los resultados
-length(dat_h)
-View(dat_h)
 
 vec = vector("numeric", 27)
 vec[2] = "Tues" ; vec[4] = ""; vec[c(5:27)] = NA
@@ -96,7 +92,7 @@ for (i in horas){
 }
 
 # Gráfico de ganancias por horas:
-grafico_2 = dat_h %>%
+grafico_3 = dat_h %>%
   ggplot() +
   aes(x = Hora) +
   geom_bar(fill = "#6510a1") +
@@ -108,4 +104,4 @@ grafico_2 = dat_h %>%
   theme(plot.subtitle = element_text(hjust = 0.5)) + 
   ggx::gg_("Center the title please") 
 
-grafico_2 + scale_y_continuous(labels = comma)
+grafico_3 = grafico_3 + scale_y_continuous(labels = comma)
