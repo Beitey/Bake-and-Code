@@ -1,0 +1,66 @@
+---
+title: "Graficos"
+author: "Francisco Vega"
+date: "05-11-2021"
+output: html_document
+---
+
+```{r message=FALSE, warning=FALSE, echo=FALSE}
+setwd("..")  # Vuelvo a mi carpeta principal
+source(here::here("Codigos/Main.R"), local = knitr::knit_global(),
+       encoding = "UTF-8")
+```
+# Gráficos
+
+## Gráfico 1 y 2:
+
+Sabemos que no todos los días son iguales, es por esto que, en las pastelerías 
+como la que estamos analizando, habrán días con mayor y menor cantidad de ventas.
+Para poder analizar de mejor manera que decisiones se pueden tomar para la 
+pastelería y poder responder la pregunta "¿En qué días hay mayores ganancias?"
+analizaremos el siguiente gráfico de "Ventas por Día":
+
+```{r echo=FALSE}
+grafico_1
+```
+
+En este gráfico se analizó en que días habían mas ventas y podemos notar que 
+los días con mayor cantidad de ventas de la tienda son los Sábados y Domingos. 
+También podemos notar que como los días Martes la tienda no abre, este no tiene 
+ventas. Con esta información podemos intuir que los Domingos habrán mayores 
+ganancias y que los días Lunes y Viernes no generarán tantas ganancias. Para 
+poder evidenciar esto, analizaremos el siguiente gráfico de "Ganancias por Día":
+
+```{r echo=FALSE}
+grafico_2
+```
+
+En el gráfico anterior podemos ver el monto generado en Wones Sur Coreanos por
+días. Con este podemos reafirmar que los días Domingos Y Sábados generan la 
+mayor cantidad de ingresos para la tienda. Adicionalmente podemos notar que a 
+medida que la semana termina (si asumimos que parte el día Lunes) las ganancias
+aumentan. También podemos notar que los días Viernes a pesar de ser uno de los 
+días con menor cantidad de ventas, es uno de los que mas ganancias genera. Es por
+eso que, para responder la pregunta podemos incluir el promedio ponderado por 
+ventas de los días, para ver cual genera mas porcentaje de ganancia, esto lo 
+podemos ver en el siguiente gráfico: (Crear gráfico)...
+
+
+
+## Gráfico 3:
+
+Sabemos que los días son diferentes entre si, pero, ¿que hay del horario?
+Como cualquier día hay ciertas rutinas que pueden generar un horario punta en la
+cafetería que se está analizando, es por eso que para poder responder a la
+pregunta "¿Cuál es el rango de horario en el que hay más pedidos?" analizaremos
+el gráfico "Ganancias por Horario":
+
+```{r echo=FALSE}
+grafico_3
+```
+
+En este gráfico podemos notar que la ganancia en Wones Sur Coreanos se genera 
+con mayor intensidad entre las 11:00 y las 14:00. Esto se puede explicar debido 
+a que dentro de muchas rutinas, este horario es utilizado para desayunar, tomar 
+una colación y/o almorzar. Podemos notar también que, a pesar de que la tienda
+cierre a las 23:00, esta no genera muchos pedidos.
