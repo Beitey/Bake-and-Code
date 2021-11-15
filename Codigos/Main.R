@@ -85,11 +85,11 @@ for (day in 1:length(dias_esp_ord)){
 }
 
 
-porcent = as.data.frame(cbind(dias_esp_ord, Porcentaje))
+porcent = as.data.frame(cbind(dias_esp_ord, format(Porcentaje, digits = 2)))
 
-porcent %>% ggplot() + 
-  aes(x = factor(dias_esp_ord, level = dias_esp_ord), Porcentaje) +
-  geom_bar(stat = "Identity")+
+grafico_3 = porcent %>% ggplot() + 
+  aes(x = factor(dias_esp_ord, level = dias_esp_ord), V2) +
+  geom_bar(stat = "Identity", fill = "#03bac7") +
   labs(title = "Promedio ponderado de Ganancias por Dia",
        subtitle = "Ganancia en Wones Sur Coreanos",
        y = "Monto ganado",
@@ -97,10 +97,6 @@ porcent %>% ggplot() +
   ggthemes::theme_base() +
   theme(plot.subtitle = element_text(hjust = 0.5)) + 
   ggx::gg_("Center the title please") 
-
-
-
-
 
 
 
@@ -121,7 +117,7 @@ for (i in horas){
 }
 
 # Gráfico de ganancias por horas:
-grafico_3 = dat_h %>%
+grafico_4 = dat_h %>%
   ggplot() +
   aes(x = Hora) +
   geom_bar(fill = "#6510a1") +
@@ -133,4 +129,5 @@ grafico_3 = dat_h %>%
   theme(plot.subtitle = element_text(hjust = 0.5)) + 
   ggx::gg_("Center the title please") 
 
-grafico_3 = grafico_3 + scale_y_continuous(labels = comma)
+grafico_4 = grafico_4 + scale_y_continuous(labels = comma)
+

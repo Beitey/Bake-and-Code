@@ -12,7 +12,7 @@ source(here::here("Codigos/Main.R"), local = knitr::knit_global(),
 ```
 # Gráficos
 
-## Gráfico 1 y 2:
+## Gráfico 1, 2 y 3:
 
 Sabemos que no todos los días son iguales, es por esto que, en las pastelerías como la que estamos analizando, habrán días con mayor y menor cantidad de ventas. Para poder analizar de mejor manera qué decisiones se pueden tomar para la pastelería y poder responder la pregunta "¿En qué días hay mayores ganancias?", analizaremos el siguiente gráfico de "Ventas por Día":
 
@@ -26,15 +26,20 @@ En este gráfico se analizó en qué días habían más ventas y del cual se pue
 grafico_2
 ```
 
-Del gráfico anterior se observa el monto generado en wones sur-coreanos por día. Con este gráfico se reafirma que los domingos y sábados son los días que generan la mayor cantidad de ingresos para la tienda. Adicionalmente podemos notar que a medida que la semana termina (si asumimos que parte el lunes) las ganancias aumentan. También se logra visualizar que los viernes a pesar de ser uno de los días con menor cantidad de ventas, es uno de los que más ganancias genera. Es por eso que, para responder la pregunta, se puede incluir el promedio ponderado de ventas por días de semana, para ver cuál genera más porcentaje de ganancia, esto lo podemos ver en el siguiente gráfico: (Crear gráfico)...
+Del gráfico anterior se observa el monto generado en wones sur-coreanos por día. Con este gráfico se reafirma que los domingos y sábados son los días que generan la mayor cantidad de ingresos para la tienda. Adicionalmente podemos notar que a medida que la semana termina (si asumimos que parte el lunes) las ganancias aumentan. También se logra visualizar que los viernes a pesar de ser uno de los días con menor cantidad de ventas, es uno de los que más ganancias genera. Es por eso que, para responder la pregunta, se puede incluir el promedio ponderado de ventas por días de semana, para ver cuál genera más porcentaje de ganancia, esto lo podemos ver en el siguiente gráfico:
 
+```{r echo=FALSE}
+grafico_3
+```
+
+En el gráfico anterior se visualiza el monto promedio de una venta por el día. Siendo este promedio calculado a través del monto total generado dividido en la cantidad de ventas por día. De este gráfico se logra concluir que los viernes es donde mas dinero se gana por venta.
 
 ## Gráfico 3:
 
 Sabemos que los días son diferentes entre sí, pero ¿que hay del horario? Como cualquier día hay ciertas rutinas que pueden generar un horario punta en la pastelería que se está analizando. Es por eso que para poder responder a la pregunta "¿Cuál es el rango de horario en el que hay más pedidos?" analizaremos el gráfico "Ganancias por Horario":
 
 ```{r echo=FALSE}
-grafico_3
+grafico_4
 ```
 
 En este gráfico podemos notar que la ganancia en wones sur-coreanos se genera con mayor intensidad entre las 11 horas y las 14 horas. Esto se puede explicar debido a que, dentro de muchas rutinas, este horario es utilizado para desayunar, tomar una colación o almorzar. También se puede ver que a pesar de que la tienda cierre a las 23:00, esta no genera muchos pedidos.

@@ -12,4 +12,8 @@ Gráfico 2:
 
 Gráfico 3:
 
-![](grafico-3_ganancias-por-hora.png)
+![](grafico-3_promedio-ponderado-por-dias.png)
+
+Gráfico 4:
+
+![](grafico-4_ganancias-por-hora.png)
