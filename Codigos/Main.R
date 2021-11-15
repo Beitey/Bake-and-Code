@@ -59,7 +59,8 @@ grafico_2 = dat  %>%
 grafico_2 = grafico_2 + scale_y_continuous(labels = comma)
   
   
-# Se Verifican sus valores:
+# Gráfico Promedio ponderado de ganancias:
+
 Ganancias_por_dia = c(0, 0, 0, 0, 0, 0, 0) # Se crea un vector con la ganancia
                                            # total del día
 
@@ -70,9 +71,37 @@ for (day in 1:length(dat$`day of week`)){
   Ganancias_por_dia[pos] = Ganancias_por_dia[pos] + as.numeric(dat[3][day,])
 }
 
-
+# Promedio del dia ponderado por venta
 names(Ganancias_por_dia) = dias_ordenados
 Ganancias_por_dia
+Ventas_por_dia = plyr::count(dat$dias) 
+
+Porcentaje = c(0, 0, 0, 0, 0, 0, 0)# Se crea un vector con la ganancia
+                                    # ponderada del día
+
+for (day in 1:length(dias_esp_ord)){
+  pos = which(Ventas_por_dia$x == dias_esp_ord[day])
+  Porcentaje[day] = as.numeric(Ganancias_por_dia[day])/ Ventas_por_dia$freq[pos]
+}
+
+
+porcent = as.data.frame(cbind(dias_esp_ord, Porcentaje))
+
+porcent %>% ggplot() + 
+  aes(x = factor(dias_esp_ord, level = dias_esp_ord), Porcentaje) +
+  geom_bar(stat = "Identity")+
+  labs(title = "Promedio ponderado de Ganancias por Dia",
+       subtitle = "Ganancia en Wones Sur Coreanos",
+       y = "Monto ganado",
+       x = "Días de la Semana") +
+  ggthemes::theme_base() +
+  theme(plot.subtitle = element_text(hjust = 0.5)) + 
+  ggx::gg_("Center the title please") 
+
+
+
+
+
 
 
 
