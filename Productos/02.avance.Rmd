@@ -50,7 +50,7 @@ wones sur-coreanos y sector de donde se realizó el pedido. Estos datos
 están representados en 27 columnas las cuales podemos ver a
 continuación:
 
-[^1]: Base de datos encontrada en
+[^1]: Base de datos obtenida de
     <https://www.kaggle.com/hosubjeong/bakery-sales>
 
 -   datetime: Fecha y hora del pedido.
@@ -89,38 +89,80 @@ source(here::here("Codigos/Main.R"), local = knitr::knit_global(),
 
 ## Analisis
 
-Sabemos que no todos los días son iguales, es por esto que, en las pastelerías como la que estamos analizando, habrán días con mayor y menor cantidad de ventas. Para poder analizar de mejor manera qué decisiones se pueden tomar para la pastelería y poder responder la pregunta "¿En qué días hay mayores ganancias ?", analizaremos el siguiente gráfico de "Ventas por Día":
+Sabemos que no todos los días son iguales, es por esto que, en las
+pastelerías como la que estamos analizando, habrán días con mayor y
+menor cantidad de ventas. Para poder analizar de mejor manera qué
+decisiones se pueden tomar para la pastelería y poder responder la
+pregunta "¿En qué días hay mayores ganancias ?", analizaremos el
+siguiente gráfico de "Ventas por Día":
 
 ```{r echo=FALSE}
 grafico_1
 ```
 
-En este gráfico se analizó en qué días habían más ventas y del cual se puede notar que los días con mayor cantidad de ventas de la tienda son los sábados y domingos. También es evidente que como los martes la tienda no abre, esta no tiene ventas. Con esta información se logra intuir que los domingos habrán mayores ganancias y que los lunes y viernes no generarán tantas ganancias. Para poder evidenciar esto, analizaremos el siguiente gráfico de "Ganancias por Día":
+En este gráfico se analizó en qué días habían más ventas y del cual se
+puede notar que los días con mayor cantidad de ventas de la tienda son
+los sábados y domingos. También es evidente que como los martes la
+tienda no abre, esta no tiene ventas. Con esta información se logra
+intuir que los domingos habrán mayores ganancias y que los lunes y
+viernes no generarán tantas ganancias. Para poder evidenciar esto,
+analizaremos el siguiente gráfico de "Ganancias por Día":
 
 ```{r echo=FALSE}
 grafico_2
 ```
 
-Del gráfico anterior se observa el monto generado en wones sur-coreanos por día. Con este gráfico se reafirma que los domingos y sábados son los días que generan la mayor cantidad de ingresos para la tienda. Adicionalmente podemos notar que a medida que la semana termina (si asumimos que parte el lunes) las ganancias aumentan. También se logra visualizar que los viernes a pesar de ser uno de los días con menor cantidad de ventas, es uno de los que más ganancias genera. Es por eso que, para responder la pregunta, se puede incluir el promedio ponderado de ventas por días de semana, para ver cuál genera mayor ganancia sin tomar en cuenta el numero de ventas, esto lo podemos ver en el siguiente gráfico: 
+Del gráfico anterior se observa el monto generado en wones sur-coreanos
+por día. Con este gráfico se reafirma que los domingos y sábados son los
+días que generan la mayor cantidad de ingresos para la tienda.
+Adicionalmente podemos notar que a medida que la semana termina (si
+asumimos que parte el lunes) las ganancias aumentan. También se logra
+visualizar que los viernes a pesar de ser uno de los días con menor
+cantidad de ventas, es uno de los que más ganancias genera. Es por eso
+que, para responder la pregunta, se puede incluir el promedio ponderado
+de ventas por días de semana, para ver cuál genera mayor ganancia sin
+tomar en cuenta el numero de ventas, esto lo podemos ver en el siguiente
+gráfico:
 
 ```{r echo=FALSE}
 grafico_3
 ```
 
-En el gráfico anterior se visualiza el monto promedio de una venta por el día. Siendo este promedio calculado a través del monto total generado dividido en la cantidad de ventas por día. De este gráfico se logra concluir que los viernes es donde mas dinero se gana por venta.
+En el gráfico anterior se visualiza el monto promedio de una venta por
+el día. Siendo este promedio calculado a través del monto total generado
+dividido en la cantidad de ventas por día. De este gráfico se logra
+concluir que los viernes es donde mas dinero se gana por venta.
 
-Adicionalmente, sabemos que los días son diferentes entre sí, pero ¿que hay del horario? Como cualquier día hay ciertas rutinas que pueden generar un horario punta en la pastelería que se está analizando. Es por eso que para poder responder a la pregunta "¿Cuál es el rango de horario en el que hay más pedidos?" analizaremos el gráfico "Ganancias por Horario":
+Adicionalmente, sabemos que los días son diferentes entre sí, pero ¿que
+hay del horario? Como cualquier día hay ciertas rutinas que pueden
+generar un horario punta en la pastelería que se está analizando. Es por
+eso que para poder responder a la pregunta "¿Cuál es el rango de horario
+en el que hay más pedidos?" analizaremos el gráfico "Ganancias por
+Horario":
 
 ```{r echo=FALSE}
 grafico_4
 ```
 
-En este gráfico podemos notar que la ganancia en wones sur-coreanos se genera con mayor intensidad entre las 11 horas y las 14 horas. Esto se puede explicar debido a que, dentro de muchas rutinas, este horario es utilizado para desayunar, tomar una colación o almorzar. También se puede ver que a pesar de que la tienda cierre a las 23:00, esta no genera muchos pedidos.
+En este gráfico podemos notar que la ganancia en wones sur-coreanos se
+genera con mayor intensidad entre las 11 horas y las 14 horas. Esto se
+puede explicar debido a que, dentro de muchas rutinas, este horario es
+utilizado para desayunar, tomar una colación o almorzar. También se
+puede ver que a pesar de que la tienda cierre a las 23:00, esta no
+genera muchos pedidos.
 
-Para continuar, podemos analizar lo productos pedidos. Esto nos permite intuir cual producto es el que más se venderá, para luego tener más de estos productos preparados. Para poder responder la pregunta "¿Cuáles son los alimentos preferidos?", analizaremos el siguiente gráfico:
+Para continuar, podemos analizar lo productos pedidos. Esto nos permite
+intuir cual producto es el que más se venderá, para luego tener más de
+estos productos preparados. Para poder responder la pregunta "¿Cuáles
+son los alimentos preferidos?", analizaremos el siguiente gráfico:
 
 ```{r echo=FALSE}
 grafico_5
 ```
 
-El gráfico anterior nos muestra el número de ventas por productos, del que podemos rescatar que el "Croissant" es el más vendido junto al "Pan Blanco" y al "Croissant de Tiramisú". Adicionalmente, el bebestible más vendido es el "Café Americano" y el "Late de Vainilla". (Es difícil visualizar bebestibles v/s comestibles, separar productos y ponerlos en español) 
+El gráfico anterior nos muestra el número de ventas por productos, del
+que podemos rescatar que el "Croissant" es el más vendido junto al "Pan
+Blanco" y al "Croissant de Tiramisú". Adicionalmente, el bebestible más
+vendido es el "Café Americano" y el "Late de Vainilla". (Es difícil
+visualizar bebestibles v/s comestibles, separar productos y ponerlos en
+español)
