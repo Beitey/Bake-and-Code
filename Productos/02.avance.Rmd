@@ -116,3 +116,11 @@ grafico_4
 ```
 
 En este gráfico podemos notar que la ganancia en wones sur-coreanos se genera con mayor intensidad entre las 11 horas y las 14 horas. Esto se puede explicar debido a que, dentro de muchas rutinas, este horario es utilizado para desayunar, tomar una colación o almorzar. También se puede ver que a pesar de que la tienda cierre a las 23:00, esta no genera muchos pedidos.
+
+Para continuar, podemos analizar lo productos pedidos. Esto nos permite intuir cual producto es el que más se venderá, para luego tener más de estos productos preparados. Para poder responder la pregunta "¿Cuáles son los alimentos preferidos?", analizaremos el siguiente gráfico:
+
+```{r echo=FALSE}
+grafico_5
+```
+
+El gráfico anterior nos muestra el número de ventas por productos, del que podemos rescatar que el "Croissant" es el más vendido junto al "Pan Blanco" y al "Croissant de Tiramisú". Adicionalmente, el bebestible más vendido es el "Café Americano" y el "Late de Vainilla". (Es difícil visualizar bebestibles v/s comestibles, separar productos y ponerlos en español) 
