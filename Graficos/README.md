@@ -17,3 +17,7 @@ Gráfico 3:
 Gráfico 4:
 
 ![](grafico-4_ganancias-por-hora.png)
+
+Gráfico 5:
+
+![](grafico-5_numero-de-ventas-por-producto.png)

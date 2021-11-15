@@ -27,10 +27,11 @@ esp_days = function(datos, dias_ordenados, dias_esp_ord){
 
 # Transformaciones --------------------------------------------------------
 
+# Días a español
 dat = dat %>% mutate(dias = esp_days(dat$`day of week`, dias_ordenados, dias_esp_ord))
 
-# Gráficos ----------------------------------------------------------------
 
+# Gráficos ----------------------------------------------------------------
 
 # Gráfico de Ventas por día
 grafico_1 = dat  %>%
@@ -130,4 +131,42 @@ grafico_4 = dat_h %>%
   ggx::gg_("Center the title please") 
 
 grafico_4 = grafico_4 + scale_y_continuous(labels = comma)
+
+# Grafico 5 Top productos
+
+# Conteo de los productos (columna 6 a 27)
+Productos = c()
+for (i in 6:27){
+  conteo = plyr::count(dat[i])
+  total = 0
+  for (j in 1:length(conteo$freq)) {
+    if (!is.na(conteo[j,1])){
+      total = total + (conteo[j,1] * conteo[j,2])
+    }
+  }
+  fil = cbind(names(dat[i]), total)
+  Productos = rbind(Productos, fil)
+}
+
+Productos = Productos %>% as.data.frame()
+colnames(Productos) = c("Producto", "Ventas")  
+
+Vendidos = c() #Ventas
+for (i in 1:22){
+  prod = Productos[i,]
+  for (j in 1:prod$Ventas){
+    Vendidos = rbind(Vendidos, as.character(prod$Producto))
+  }
+}
+Vendidos = as.data.frame(Vendidos)
+
+grafico_5 = Vendidos %>% ggplot() + 
+  aes(x = reorder(V1, V1 ,function(x)+length(x))) + 
+  geom_bar(fill = "#3F9E91") +
+  labs(title = "Numero de ventas por Producto",
+       y = "Número de Ventas",
+       x = "Productos") + 
+  coord_flip(xlim = NULL, ylim = NULL, expand = TRUE, clip = "on") +
+  ggthemes::theme_base() +
+  ggx::gg_("Center the title please")
 
