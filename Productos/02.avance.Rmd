@@ -2,13 +2,17 @@
 title: "Primer Avance"
 author: "Francisco Vega"
 date: "14-11-2021"
-output: html_document
+output:
+  rmdformats::downcute:
+    self_contained: true
+    default_style: "dark"
+    downcute_theme: "default"
 editor_options: 
   markdown: 
     wrap: 72
 ---
 
-## Introducción:
+## Introducción
 
 En el mundo actual hay muchos datos que se recopilan de forma
 automática. Un ejemplo de esto son los deliveries, allí se puede obtener
@@ -83,7 +87,7 @@ source(here::here("Codigos/Main.R"), local = knitr::knit_global(),
        encoding = "UTF-8")
 ```
 
-## Analisis:
+## Analisis
 
 Sabemos que no todos los días son iguales, es por esto que, en las pastelerías como la que estamos analizando, habrán días con mayor y menor cantidad de ventas. Para poder analizar de mejor manera qué decisiones se pueden tomar para la pastelería y poder responder la pregunta "¿En qué días hay mayores ganancias ?", analizaremos el siguiente gráfico de "Ventas por Día":
 

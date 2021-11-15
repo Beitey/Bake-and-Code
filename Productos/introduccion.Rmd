@@ -2,7 +2,11 @@
 title: "Introducción"
 author: "Francisco Vega"
 date: "14-10-2021"
-output: html_document
+output:
+  rmdformats::downcute:
+    self_contained: true
+    default_style: "dark"
+    downcute_theme: "default"
 ---
 
 
