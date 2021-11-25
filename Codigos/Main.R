@@ -251,3 +251,87 @@ grafico_7 = dat_h %>%
   ggthemes::theme_base() +
   theme(plot.subtitle = element_text(hjust = 0.5)) + 
   ggx::gg_("Center the title please") 
+
+
+# Grafico 8
+# Top Productos por hora.
+dat_h = dat_h %>% mutate(`Top Comestible` = NA) %>% 
+  mutate(`Top Bebestible` = NA)
+
+comestibles = c(5, 6, 9, 11, 13) #Top 5 comestibles
+names_com = c("Pan de mantequilla y Frijoles rojos", "Pan Blanco", "Croissant",
+              "Croissant de Tiramisú", "Pan de Chocolate")
+bebestibles = c(8, 10, 17, 21, 24, 25) # Bebestibles
+names_beb = c("Café americano", 
+              "Café latte", "Té con leche", "Limonada",
+              "Café de Vainilla latte", "Jugo de Frutos Rojos")
+for (i in 1:length(dat_h$total)){
+  com = 0
+  com_cant = 0
+  
+  for (j in comestibles){
+    if (!is.na(dat_h[i,j])){
+      if (dat_h[i,j] > com_cant){ #En caso de empate gana el primero.
+        com = j
+        com_cant = dat_h[i,j]
+      }
+    }
+  }
+  
+  if (!com == 0){
+    p = which(com == comestibles)
+    com = names_com[p]
+  }else{
+    com = "No Aplica"
+  }
+  
+  beb = 0
+  beb_cant = 0
+  for (j in bebestibles){
+    if (!is.na(dat_h[i,j])){
+      if (dat_h[i,j] > beb_cant){ #En caso de empate gana el primero.
+        beb = j
+        beb_cant = dat_h[i,j]
+      }
+    }
+  }
+  
+  if (!beb == 0){
+    p = which(beb == bebestibles)
+    beb = names_beb[p]
+  }else{
+    beb = "No Aplica"
+  }
+
+  dat_h$`Top Comestible`[i] = com
+  dat_h$`Top Bebestible`[i] = beb
+}
+
+
+grafico_8 = dat_h %>% filter(!`Top Bebestible` == "No Aplica")%>%
+  ggplot() +
+  aes(x = Hora, fill = `Top Bebestible`) +
+  geom_bar() +
+  labs(title = "Pedidos por Horario",
+       subtitle = "Separado por bebestibles",
+       y = "Cantidad Pedida",
+       x = "Hora del día") +
+  ggthemes::theme_base() +
+  theme(plot.subtitle = element_text(hjust = 0.5)) + 
+  ggx::gg_("Center the title please") 
+
+
+grafico_9 = dat_h %>% filter(!`Top Comestible`=="No Aplica") %>% 
+  filter(Hora<18) %>% 
+  ggplot() +
+  aes(x = Hora, fill = `Top Comestible`) +
+  geom_bar() +
+  labs(title = "Pedidos por Horario",
+       subtitle = "Separado por Top 5 Comestibles",
+       y = "Cantidad Pedida",
+       x = "Hora del día") +
+  ggthemes::theme_base() +
+  theme(plot.subtitle = element_text(hjust = 0.5)) + 
+  ggx::gg_("Center the title please") 
+
+

@@ -27,3 +27,9 @@ Gráfico 5 y 6:
 Gráfico 7:
 
 ![](grafico-7_tipo-por-hora.png)
+
+Gráfico 8 y 9:
+
+![](grafico-8_pedidos-por-horario-por-bebestibles.png)
+
+![](grafico-9_pedidos-por-horario-por-top-comestible.png)
