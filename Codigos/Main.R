@@ -30,6 +30,62 @@ esp_days = function(datos, dias_ordenados, dias_esp_ord){
 # Días a español
 dat = dat %>% mutate(dias = esp_days(dat$`day of week`, dias_ordenados, dias_esp_ord))
 
+# Productos a español
+
+## Obtengo Productos
+
+# Conteo de los productos (columna 6 a 27)
+Productos = c()
+for (i in 5:27){
+  conteo = plyr::count(dat[i])
+  total = 0
+  for (j in 1:length(conteo$freq)) {
+    if (!is.na(conteo[j,1])){
+      total = total + (conteo[j,1] * conteo[j,2])
+    }
+  }
+  fil = cbind(names(dat[i]), total)
+  Productos = rbind(Productos, fil)
+}
+
+Productos = Productos %>% as.data.frame()
+colnames(Productos) = c("Producto", "Ventas")  
+
+# Productos en español
+Productos_esp = c("Pan de mantequilla y Frijoles rojos",
+                  "Pan Blanco", "Tarta de Durazno", "Café americano", 
+                  "Croissant", "Café latte", "Croissant de Tiramisú", 
+                  "Croissant cuvierto de chocolate Varhona", "Pan de Chocolate",
+                  "Croissant rellenado con crema de Almendras", 
+                  "Croque Monsieur", "Mad Garlic", "Té con leche", 
+                  "Pastel de Chocolate", "Pandoro", "Cheese Cake", "Limonada", 
+                  "Queque de Naranja", "Panecillo con Salchicha", 
+                  "Café de Vainilla latte", "Jugo de Frutos Rojos",
+                  "Tiramisú", "Galletas de Merengue")
+
+Bebestibles = c("Café americano", 
+                "Café latte", "Té con leche", "Limonada",
+                "Café de Vainilla latte", "Jugo de Frutos Rojos")
+
+Productos = cbind(Productos, Productos_esp)
+
+
+Vendidos_com = c() #Ventas
+Vendidos_beb = c()
+for (i in 1:22){
+  prod = Productos[i,]
+  for (j in 1:prod$Ventas){
+    if (prod$Productos_esp %in% Bebestibles){
+      Vendidos_beb = rbind(Vendidos_beb, as.character(prod$Productos_esp))
+    }else{
+      Vendidos_com = rbind(Vendidos_com, as.character(prod$Productos_esp))
+    }
+  }  
+}
+
+Vendidos_beb = as.data.frame(Vendidos_beb)
+Vendidos_com = as.data.frame(Vendidos_com)
+
 
 # Gráficos ----------------------------------------------------------------
 
@@ -122,51 +178,78 @@ grafico_4 = dat_h %>%
   ggplot() +
   aes(x = Hora) +
   geom_bar(fill = "#6510a1") +
-  labs(title = "Ganancias por Horario",
-       subtitle = "Ganancia en Wones Sur Coreanos",
-       y = "Monto ganado",
+  labs(title = "Cantidad de pedidos por Horario",
+       y = "Cantidad de pedidos",
        x = "Hora del día") +
-  ggthemes::theme_base() +
-  theme(plot.subtitle = element_text(hjust = 0.5)) + 
+  ggthemes::theme_base() + 
   ggx::gg_("Center the title please") 
 
-grafico_4 = grafico_4 + scale_y_continuous(labels = comma)
 
-# Grafico 5 Top productos
 
-# Conteo de los productos (columna 6 a 27)
-Productos = c()
-for (i in 6:27){
-  conteo = plyr::count(dat[i])
-  total = 0
-  for (j in 1:length(conteo$freq)) {
-    if (!is.na(conteo[j,1])){
-      total = total + (conteo[j,1] * conteo[j,2])
-    }
-  }
-  fil = cbind(names(dat[i]), total)
-  Productos = rbind(Productos, fil)
-}
+# Grafico 5 Top productos Bebestibles y Comestibles
 
-Productos = Productos %>% as.data.frame()
-colnames(Productos) = c("Producto", "Ventas")  
 
-Vendidos = c() #Ventas
-for (i in 1:22){
-  prod = Productos[i,]
-  for (j in 1:prod$Ventas){
-    Vendidos = rbind(Vendidos, as.character(prod$Producto))
-  }
-}
-Vendidos = as.data.frame(Vendidos)
-
-grafico_5 = Vendidos %>% ggplot() + 
+grafico_5 = Vendidos_beb %>% ggplot() + 
   aes(x = reorder(V1, V1 ,function(x)+length(x))) + 
   geom_bar(fill = "#3F9E91") +
-  labs(title = "Numero de ventas por Producto",
+  labs(title = "Numero de ventas por Producto Bebestibles",
        y = "Número de Ventas",
        x = "Productos") + 
   coord_flip(xlim = NULL, ylim = NULL, expand = TRUE, clip = "on") +
   ggthemes::theme_base() +
   ggx::gg_("Center the title please")
 
+
+grafico_6 = Vendidos_com %>% ggplot() + 
+  aes(x = reorder(V1, V1 ,function(x)+length(x))) + 
+  geom_bar(fill = "#3F9E91") +
+  labs(title = "Numero de ventas por Producto Comestibles",
+       y = "Número de Ventas",
+       x = "Productos") + 
+  coord_flip(xlim = NULL, ylim = NULL, expand = TRUE, clip = "on") +
+  ggthemes::theme_base() +
+  ggx::gg_("Center the title please")
+
+# Dulce vs Salado
+
+dat_h = dat_h %>% mutate(Tipo = NA)
+
+# Posiciones dulces y salados
+Azucarados = c(7, 11, 12, 13, 18, 19, 20, 22, 26, 27)
+Salados = c(5, 6, 9, 14, 23)
+
+## Reviso si el pedido fue mas Dulce que salado (sin contar bebestibles)
+for (i in 1:length(dat_h$total)){
+  salado = 0
+  dulce = 0
+  for (j in 5:27){
+    if (!is.na(dat_h[i,j])){
+      if (j %in% Azucarados){
+        dulce = dulce + as.numeric(dat_h[i,j])
+      }else{
+        salado = salado + as.numeric(dat_h[i,j])
+      }
+    }
+  }
+  
+  # En caso de empate se usará dulce puesto a que los bebestibles son dulces
+  if (salado > dulce){
+    dat_h$Tipo[i] = "Salado"
+  }else{
+    dat_h$Tipo[i] = "Dulce"
+  }
+}
+
+view(dat_h)
+
+grafico_7 = dat_h %>%
+  ggplot() +
+  aes(x = Hora, fill = Tipo) +
+  geom_bar() +
+  labs(title = "Pedidos por Horario",
+       subtitle = "Separado por dulce o salado",
+       y = "Cantidad Pedida",
+       x = "Hora del día") +
+  ggthemes::theme_base() +
+  theme(plot.subtitle = element_text(hjust = 0.5)) + 
+  ggx::gg_("Center the title please") 
