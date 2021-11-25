@@ -240,8 +240,6 @@ for (i in 1:length(dat_h$total)){
   }
 }
 
-view(dat_h)
-
 grafico_7 = dat_h %>%
   ggplot() +
   aes(x = Hora, fill = Tipo) +

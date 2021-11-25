@@ -40,20 +40,33 @@ En el gráfico anterior se visualiza el monto promedio de una venta por el día.
 
 ## Gráfico 4:
 
-Sabemos que los días son diferentes entre sí, pero ¿que hay del horario? Como cualquier día hay ciertas rutinas que pueden generar un horario punta en la pastelería que se está analizando. Es por eso que para poder responder a la pregunta "¿Cuál es el rango de horario en el que hay más pedidos?" analizaremos el gráfico "Ganancias por Horario":
+Sabemos que los días son diferentes entre sí, pero ¿que hay del horario? Como cualquier día hay ciertas rutinas que pueden generar un horario punta en la pastelería que se está analizando. Es por eso que para poder responder a la pregunta "¿Cuál es el rango de horario en el que hay más pedidos?" analizaremos el gráfico "Cantidad de Pedidos por Horario":
 
 ```{r echo=FALSE}
 grafico_4
 ```
 
-En este gráfico podemos notar que la ganancia en wones sur-coreanos se genera con mayor intensidad entre las 11 horas y las 14 horas. Esto se puede explicar debido a que, dentro de muchas rutinas, este horario es utilizado para desayunar, tomar una colación o almorzar. También se puede ver que a pesar de que la tienda cierre a las 23:00, esta no genera muchos pedidos.
+En este gráfico podemos notar que los pedidos se generan con mayor intensidad entre las 11 horas y las 14 horas. Esto se puede explicar debido a que, dentro de muchas rutinas, este horario es utilizado para desayunar, tomar una colación o almorzar. También se puede ver que a pesar de que la tienda cierre a las 23:00, esta no genera muchos pedidos.
 
-## Gráfico 5:
+## Gráfico 5 y 6:
 
-Para continuar, podemos analizar lo productos pedidos. Esto nos permite intuir cual producto es el que más se venderá, para luego tener más de estos productos preparados. Para poder responder la pregunta "¿Cuáles son los alimentos preferidos?", analizaremos el siguiente gráfico:
+Para continuar, podemos analizar lo productos pedidos. Esto nos permite intuir cual producto es el que más se venderá, para luego tener más de estos productos preparados. Para poder responder la pregunta "¿Cuáles son los alimentos preferidos?", analizaremos los siguientes gráficos:
 
 ```{r echo=FALSE}
 grafico_5
 ```
+```{r}
+grafico_6
+```
 
-El gráfico anterior nos muestra el número de ventas por productos, del que podemos rescatar que el "Croissant" es el más vendido junto al "Pan Blanco" y al "Croissant de Tiramisú". Adicionalmente, el bebestible más vendido es el "Café Americano" y el "Late de Vainilla". (Es difícil visualizar bebestibles v/s comestibles, separar productos y ponerlos en español) 
+Los gráficos anteriores nos muestran el número de ventas por productos. En el primer gráfico se visualiza que el "Café americano" es el bebestible más vendido para acompañar al resto de los productos. Por otro lado, del segundo gráfico podemos rescatar que el "Pan de mantequilla con frijoles rojos" es por lejos el más vendido, le siguen el "Croissant", el "Pan Blanco" y el "Croissant de Tiramisú". 
+
+## Gráfico 7:
+
+Dentro de una pastelería se pueden encontrar alimentos dulces y salados, es por eso que se desea analizar si el horario nos condiciona a pedir un alimento dulce por sobre un alimento salado. Para responder a la pregunta "¿En qué horarios la gente prefiere productos dulces por sobre los productos salados?", se analizará el siguiente gráfico:
+
+```{r}
+grafico_7
+```
+
+Del gráfico anterior, se logra apreciar que sin importar el horario, los alimentos del tipo salado siempre serán los que más venden. 
