@@ -75,10 +75,7 @@ En función de estos datos se buscará responder las siguientes preguntas:
 
 4.  ¿Qué relación hay entre los alimentos más vendidos y el horario?
 
-5.  ¿Qué modelo puede predecir los pedidos que se realizarán en cierto
-    rango horario?
-
-6.  ¿En qué horarios la gente prefiere productos dulces por sobre los
+5.  ¿En qué horarios la gente prefiere productos dulces por sobre los
     productos salados?
 
 ```{r message=FALSE, warning=FALSE, echo=FALSE}
