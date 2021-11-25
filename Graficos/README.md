@@ -16,8 +16,14 @@ Gráfico 3:
 
 Gráfico 4:
 
-![](grafico-4_ganancias-por-hora.png)
+![](grafico-4_pedidos-por-hora.png)
 
-Gráfico 5:
+Gráfico 5 y 6:
 
-![](grafico-5_numero-de-ventas-por-producto.png)
+![](grafico-5_numero-de-ventas-por-producto_bebestible.png)
+
+![](grafico-5_numero-de-ventas-por-producto_comestible.png)
+
+Gráfico 7:
+
+![](grafico-7_tipo-por-hora.png)
