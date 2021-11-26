@@ -2,7 +2,7 @@
 require(tidyverse)
 require(scales)
 require(ggthemes)
-
+require(gtsummary)
 # Abriendo base de datos: -------------------------------------------------
 
 dat = rio::import("Data_Set/Bakery Sales.csv") %>% tibble()
@@ -333,5 +333,25 @@ grafico_9 = dat_h %>% filter(!`Top Comestible`=="No Aplica") %>%
   ggthemes::theme_base() +
   theme(plot.subtitle = element_text(hjust = 0.5)) + 
   ggx::gg_("Center the title please") 
+
+theme_gtsummary_language(
+  language = "es",
+  decimal.mark = ",",
+  big.mark = "."
+)
+
+tbl_1 = dat_h %>% filter(!`Top Bebestible`=="No Aplica") %>% 
+  filter(Hora<18) %>% select(Hora, `Top Bebestible`) %>% 
+  tbl_summary(by=Hora, label = list(`Top Bebestible`~"Productos")) %>% 
+  modify_spanning_header(all_stat_cols() ~ "**Hora**") %>% 
+  modify_header(update = list(label~"")) %>% 
+  modify_footnote(all_stat_cols()~"Ventas en porcentajes")
+
+tbl_2 = dat_h %>% filter(!`Top Comestible`=="No Aplica") %>% 
+  filter(Hora<18) %>% select(Hora, `Top Comestible`) %>% 
+  tbl_summary(by=Hora, label = list(`Top Comestible`~"Productos")) %>% 
+  modify_spanning_header(all_stat_cols() ~ "**Hora**") %>% 
+  modify_header(update = list(label~"")) %>% 
+  modify_footnote(all_stat_cols()~"Ventas en porcentajes")
 
 

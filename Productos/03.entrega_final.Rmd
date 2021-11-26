@@ -184,4 +184,17 @@ grafico_8
 grafico_9
 ```
 
-Ambos gráficos contemplan un horario desde las 11:00 hasta las 17:00. Para el gráfico de los bebestibles se compararon todos los bebestibles para visualizar si el horario afecta. Podemos observar que a las 11:00 el café americano es el que tiene más de la mitad de las ventas, pero a medida que el día finaliza, el porcentaje de café americano por hora disminuye. Por otro lado, en el gráfico que contempla solo los comestibles, podemos notar que, el pan de mantequilla y frijoles rojos es el que presenta la mayor cantidad de ventas en todos los horarios, por lo que, sin importar el horario este producto será el que más se venda.
+Ambos gráficos contemplan un horario desde las 11:00 hasta las 17:00. Para el gráfico de los bebestibles se compararon todos los bebestibles para visualizar si el horario afecta. Podemos observar que a las 11:00 el "café americano" es el que tiene más de la mitad de las ventas, pero a medida que el día finaliza, el porcentaje de "café americano" por hora disminuye. Por otro lado, en el gráfico que contempla solo los comestibles, podemos notar que, el "pan de mantequilla y frijoles rojos" es el que presenta la mayor cantidad de ventas en todos los horarios, por lo que, sin importar el horario este producto será el que más se venda. Para poder obtener más información utilizaremos tablas. 
+En primer lugar analizaremos la tabla de ventas por hora de los bebestibles:
+```{r}
+tbl_1
+```
+
+La tabla nos verifica que el "café americano" va disminuyendo su porcentaje de ventas durante el día. Del resto no se puede concluir que el horario afecta a sus ventas.
+Ahora analicemos la tabla de ventas por hora de los comestibles:
+```{r}
+tbl_2
+```
+Podemos ver que el porcentaje del "Pan de mantequilla y frijoles rojos" tiene un porcentaje que no varia tanto durante el día, al igual que en el caso de los bebestibles, el resto no nos da información para concluir que el horaio afecta en sus ventas.
+
+
