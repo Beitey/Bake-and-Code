@@ -161,7 +161,7 @@ Para continuar, podemos analizar lo productos pedidos. Esto nos permite intuir c
 ```{r echo=FALSE}
 grafico_5
 ```
-```{r}
+```{r echo=FALSE}
 grafico_6
 ```
 
@@ -169,7 +169,7 @@ Los gráficos anteriores nos muestran el número de ventas por productos. En el 
 
 Dentro de una pastelería se pueden encontrar alimentos dulces y salados, es por eso que se desea analizar si el horario nos condiciona a pedir un alimento dulce por sobre un alimento salado. Para responder a la pregunta "¿En qué horarios la gente prefiere productos dulces por sobre los productos salados?", se analizará el siguiente gráfico:
 
-```{r}
+```{r echo=FALSE}
 grafico_7
 ```
 
@@ -177,24 +177,26 @@ Del gráfico anterior, se logra apreciar que sin importar el horario, los alimen
 
 Del mismo modo en que hay alimentos dulces y salados, también podemos encontrar una variedad de productos. Por lo que, se analizará si el horario afecta a la hora de pedir un producto u otro. Para ello se analizarán dos gráficos para responder a la pregunta "¿Qué relación hay entre los alimentos más vendidos y el horario?", los dos gráficos que se analizarán son los siguientes:
 
-```{r}
+```{r echo=FALSE}
 grafico_8
 ```
-```{r}
+```{r echo=FALSE}
 grafico_9
 ```
 
 Ambos gráficos contemplan un horario desde las 11:00 hasta las 17:00. Para el gráfico de los bebestibles se compararon todos los bebestibles para visualizar si el horario afecta. Podemos observar que a las 11:00 el "café americano" es el que tiene más de la mitad de las ventas, pero a medida que el día finaliza, el porcentaje de "café americano" por hora disminuye. Por otro lado, en el gráfico que contempla solo los comestibles, podemos notar que, el "pan de mantequilla y frijoles rojos" es el que presenta la mayor cantidad de ventas en todos los horarios, por lo que, sin importar el horario este producto será el que más se venda. Para poder obtener más información utilizaremos tablas. 
-En primer lugar analizaremos la tabla de ventas por hora de los bebestibles:
-```{r}
+En primer lugar, analizaremos la tabla de ventas por hora de los bebestibles:
+```{r echo=FALSE}
 tbl_1
 ```
 
 La tabla nos verifica que el "café americano" va disminuyendo su porcentaje de ventas durante el día. Del resto no se puede concluir que el horario afecta a sus ventas.
 Ahora analicemos la tabla de ventas por hora de los comestibles:
-```{r}
+```{r echo=FALSE}
 tbl_2
 ```
-Podemos ver que el porcentaje del "Pan de mantequilla y frijoles rojos" tiene un porcentaje que no varia tanto durante el día, al igual que en el caso de los bebestibles, el resto no nos da información para concluir que el horaio afecta en sus ventas.
+Podemos ver que el porcentaje del "Pan de mantequilla y frijoles rojos" tiene un porcentaje que no varia tanto durante el día, al igual que en el caso de los bebestibles, el resto no nos da información para concluir que el horario afecta en sus ventas.
+
+## Conclusión
 
 
