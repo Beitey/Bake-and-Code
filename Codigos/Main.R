@@ -204,7 +204,7 @@ grafico_6 = Vendidos_com %>% ggplot() +
   aes(x = reorder(V1, V1 ,function(x)+length(x))) + 
   geom_bar(fill = "#3F9E91") +
   labs(title = "Número de ventas",
-       subtitle = "Productos bebestibles",
+       subtitle = "Productos comestibles",
        y = "Número de ventas",
        x = "") + 
   coord_flip(xlim = NULL, ylim = NULL, expand = TRUE, clip = "on") +
