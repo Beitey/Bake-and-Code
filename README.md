@@ -2,7 +2,7 @@
 
 En este repositorio se analiza datos recabados a través de un delivery en una tienda de pastelería en Corea.
 
-## [Data Set :sandwich:](https://www.kaggle.com/hosubjeong/bakery-sales)
+## [Data Set :pancakes:](https://www.kaggle.com/hosubjeong/bakery-sales)
 
 Aquí se guarda la base de datos utilizada, la cual consta de 2 archivos .csv que contienen datos de diferentes deliverys de una pastelería. Los datos fueron conseguidos de la página Kaggle, estos pertenecen a Hosub Jeong. Se puede encontrar en el siguiente enlace: <https://www.kaggle.com/hosubjeong/bakery-sales>
 
