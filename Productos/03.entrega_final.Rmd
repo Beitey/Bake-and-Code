@@ -12,9 +12,27 @@ editor_options:
     wrap: 72
 ---
 
-## \#\# Resumen
+## Resumen
 
-## \#\# Abstract
+Los deliveries generan datos importantes para la toma de decisiones. Por
+lo que, en este trabajo se busca ver que decisiones se pueden tomar en
+una pastelería en Corea del Sur. Los datos utilizados poseen información
+sobre la fecha y hora, el total en wones sur-coreanos y los productos
+solicitados. Los resultados obtenidos nos presentan los días con mayor
+cantidad de ventas, producto mas vendido y el rango de horario mas
+popular. Las decisiones que se pueden tomar con los datos obtenidos van
+desde creación de promociones hasta cambios en el horario de atención.
+
+## Abstract
+
+Deliveries generate important data for decision making. Therefore, in
+this paper we seek to see what decisions can be made in a South Korean
+bakery. The data used has information about the date and time, the total
+in South Korean won and the products ordered. The results obtained show
+the days with the highest number of sales, the most sold product and the
+most popular time range. The decisions that can be made with the data
+obtained range from the creation of promotions to changes in the opening
+hours.
 
 ## Introducción
 
@@ -58,21 +76,22 @@ cuales podemos ver a continuación:
 [^1]: Base de datos obtenida de
     <https://www.kaggle.com/hosubjeong/bakery-sales>
 
-+--------------------+------------------------------------------------------------+
-| Nombre de la       | Significado                                                |
-| Columna            |                                                            |
-+====================+============================================================+
-| datetime           | Fecha y hora del pedido.                                   |
-+--------------------+------------------------------------------------------------+
-| day of week        | Día de la semana.                                          |
-+--------------------+------------------------------------------------------------+
-| total              | El monto total del pedido en wones sur-coreanos            |
-+--------------------+------------------------------------------------------------+
-| 23 columnas de     | Estas corresponden a los productos, entre los cuales       |
-| diferentes         | podemos encontrar sándwiches, cafés, tés y pasteles. Los   |
-| productos          | valores de las columnas corresponden a un número que       |
-|                    | indica cuantas unidades fueron solicitadas.                |
-+--------------------+------------------------------------------------------------+
++-----------------+----------------------------------------------------+
+| Nombre de la    | Significado                                        |
+| Columna         |                                                    |
++=================+====================================================+
+| datetime        | Fecha y hora del pedido.                           |
++-----------------+----------------------------------------------------+
+| day of week     | Día de la semana.                                  |
++-----------------+----------------------------------------------------+
+| total           | El monto total del pedido en wones sur-coreanos    |
++-----------------+----------------------------------------------------+
+| 23 columnas de  | Estas corresponden a los productos, entre los      |
+| diferentes      | cuales podemos encontrar sándwiches, cafés, tés y  |
+| productos       | pasteles. Los valores de las columnas corresponden |
+|                 | a un número que indica cuantas unidades fueron     |
+|                 | solicitadas.                                       |
++-----------------+----------------------------------------------------+
 
 : Columnas de datos
 
@@ -100,36 +119,71 @@ source(here::here("Codigos/Main.R"), local = knitr::knit_global(),
 
 ## Análisis
 
-Sabemos que no todos los días son iguales, es por esto que, en las pastelerías como la que estamos analizando, habrá días con mayor y menor cantidad de ventas. Para poder entender de mejor manera qué decisiones se pueden tomar para la pastelería y poder responder la pregunta "¿En qué días hay mayores ganancias?", veremos el siguiente
-gráfico de "Ventas por Día":
+Sabemos que no todos los días son iguales, es por esto que, en las
+pastelerías como la que estamos analizando, habrá días con mayor y menor
+cantidad de ventas. Para poder entender de mejor manera qué decisiones
+se pueden tomar para la pastelería y poder responder la pregunta "¿En
+qué días hay mayores ganancias?", veremos el siguiente gráfico de
+"Ventas por Día":
 
 ```{r echo=FALSE}
 grafico_1
 ```
 
-En este gráfico es posible advertir que los días con mayor cantidad de ventas de la tienda son los sábados y domingos. También es evidente que como los martes la tienda no abre, esta no tiene ventas. Con esta información se logra intuir que los domingos habrá mayores ganancias y que los lunes y viernes no generarán tantas. Para poder corroborar esto, usaremos el siguiente gráfico de "Ganancias por Día":
+En este gráfico es posible advertir que los días con mayor cantidad de
+ventas de la tienda son los sábados y domingos. También es evidente que
+como los martes la tienda no abre, esta no tiene ventas. Con esta
+información se logra intuir que los domingos habrá mayores ganancias y
+que los lunes y viernes no generarán tantas. Para poder corroborar esto,
+usaremos el siguiente gráfico de "Ganancias por Día":
 
 ```{r echo=FALSE}
 grafico_2
 ```
 
-Del gráfico anterior se observa el monto generado en wones sur-coreanos por día. Así se reafirma que los domingos y sábados son los días que generan la mayor cantidad de ingresos para la tienda. Adicionalmente podemos notar que, a medida que la semana termina (si asumimos que parte el lunes), las ganancias aumentan. También se logra visualizar que los viernes, a pesar de ser uno de los días con menor cantidad de ventas, es uno de los que más ganancias genera. Es por eso que, para responder la pregunta, se puede incluir el promedio ponderado de ventas por días de semana, para ver cuál genera mayor ganancia por venta. Esto lo podemos ver en el siguiente gráfico:
+Del gráfico anterior se observa el monto generado en wones sur-coreanos
+por día. Así se reafirma que los domingos y sábados son los días que
+generan la mayor cantidad de ingresos para la tienda. Adicionalmente
+podemos notar que, a medida que la semana termina (si asumimos que parte
+el lunes), las ganancias aumentan. También se logra visualizar que los
+viernes, a pesar de ser uno de los días con menor cantidad de ventas, es
+uno de los que más ganancias genera. Es por eso que, para responder la
+pregunta, se puede incluir el promedio ponderado de ventas por días de
+semana, para ver cuál genera mayor ganancia por venta. Esto lo podemos
+ver en el siguiente gráfico:
 
 ```{r echo=FALSE}
 grafico_3
 ```
 
-En el gráfico anterior se visualiza el monto promedio de una venta por día. Este promedio se calcula a través del monto total generado dividido en la cantidad de ventas por día. De este gráfico se logra concluir que los viernes es cuando más dinero se gana por venta.
+En el gráfico anterior se visualiza el monto promedio de una venta por
+día. Este promedio se calcula a través del monto total generado dividido
+en la cantidad de ventas por día. De este gráfico se logra concluir que
+los viernes es cuando más dinero se gana por venta.
 
-Adicionalmente, sabemos que los días son diferentes entre sí, pero ¿qué hay del horario? Como cualquier día hay ciertas rutinas que pueden generar un horario punta en la pastelería que se está analizando. Es por eso que para poder responder a la pregunta "¿Cuál es el rango de horario en el que hay más pedidos?" utilizaremos el gráfico "Ganancias por Horario":
+Adicionalmente, sabemos que los días son diferentes entre sí, pero ¿qué
+hay del horario? Como cualquier día hay ciertas rutinas que pueden
+generar un horario punta en la pastelería que se está analizando. Es por
+eso que para poder responder a la pregunta "¿Cuál es el rango de horario
+en el que hay más pedidos?" utilizaremos el gráfico "Ganancias por
+Horario":
 
 ```{r echo=FALSE}
 grafico_4
 ```
 
-En este gráfico podemos notar que los pedidos se generan con mayor intensidad entre las 11 horas y las 14 horas. Esto se puede explicar debido a que, dentro de muchas rutinas, este horario es utilizado para desayunar, tomar una colación o almorzar. También se puede ver que a pesar de que la tienda cierre a las 23:00, esta no genera muchas solicitudes después de las 18 horas.
+En este gráfico podemos notar que los pedidos se generan con mayor
+intensidad entre las 11 horas y las 14 horas. Esto se puede explicar
+debido a que, dentro de muchas rutinas, este horario es utilizado para
+desayunar, tomar una colación o almorzar. También se puede ver que a
+pesar de que la tienda cierre a las 23:00, esta no genera muchas
+solicitudes después de las 18 horas.
 
-Para continuar, podemos analizar lo productos pedidos. Esto nos permite intuir cual producto es el que más se venderá, para luego tener más de estos productos preparados. Para poder responder la pregunta "¿Cuáles son los alimentos preferidos?", analizaremos los siguientes gráficos separados por bebestibles y comestibles:
+Para continuar, podemos analizar lo productos pedidos. Esto nos permite
+intuir cual producto es el que más se venderá, para luego tener más de
+estos productos preparados. Para poder responder la pregunta "¿Cuáles
+son los alimentos preferidos?", analizaremos los siguientes gráficos
+separados por bebestibles y comestibles:
 
 ```{r echo=FALSE}
 grafico_5
@@ -139,17 +193,31 @@ grafico_5
 grafico_6
 ```
 
-Los gráficos anteriores nos muestran el número de ventas por productos. Del primer gráfico se concluye que, el "Café americano" es el bebestible más vendido. Por otro lado, del segundo gráfico podemos rescatar que, el "Pan de mantequilla con frijoles rojos" es por lejos el producto más vendido.
+Los gráficos anteriores nos muestran el número de ventas por productos.
+Del primer gráfico se concluye que, el "Café americano" es el bebestible
+más vendido. Por otro lado, del segundo gráfico podemos rescatar que, el
+"Pan de mantequilla con frijoles rojos" es por lejos el producto más
+vendido.
 
-Dentro de una pastelería se pueden encontrar alimentos dulces y salados, es por eso que se desea ver si el horario nos condiciona a pedir un alimento dulce por sobre un alimento salado. Para responder a la pregunta "¿En qué horarios la gente prefiere productos dulces por sobre los productos salados?", se analizará el siguiente gráfico:
+Dentro de una pastelería se pueden encontrar alimentos dulces y salados,
+es por eso que se desea ver si el horario nos condiciona a pedir un
+alimento dulce por sobre un alimento salado. Para responder a la
+pregunta "¿En qué horarios la gente prefiere productos dulces por sobre
+los productos salados?", se analizará el siguiente gráfico:
 
 ```{r echo=FALSE}
 grafico_7
 ```
 
-Del gráfico anterior, se logra apreciar que, sin importar el horario, los alimentos del tipo salado siempre serán los que más venden.
+Del gráfico anterior, se logra apreciar que, sin importar el horario,
+los alimentos del tipo salado siempre serán los que más venden.
 
-Del mismo modo en que hay alimentos dulces y salados, también podemos encontrar una variedad de productos. Por lo que, se verá si el horario afecta a la hora de pedir un producto u otro. Para ello se utilizarán dos gráficos para responder a la pregunta "¿Qué relación hay entre los alimentos más vendidos y el horario?", los dos gráficos que se analizarán son los siguientes:
+Del mismo modo en que hay alimentos dulces y salados, también podemos
+encontrar una variedad de productos. Por lo que, se verá si el horario
+afecta a la hora de pedir un producto u otro. Para ello se utilizarán
+dos gráficos para responder a la pregunta "¿Qué relación hay entre los
+alimentos más vendidos y el horario?", los dos gráficos que se
+analizarán son los siguientes:
 
 ```{r echo=FALSE}
 grafico_8
@@ -159,18 +227,94 @@ grafico_8
 grafico_9
 ```
 
-Ambos gráficos contemplan un horario desde las 11:00 hasta las 17:00. Para el gráfico de los bebestibles se compararon todos los bebestibles para visualizar si el horario afecta. Podemos observar que a las 11:00 el "café americano" es el que tiene más de la mitad de las ventas, pero a medida que el día finaliza, el porcentaje de "café americano" por hora disminuye. Por otro lado, en el gráfico que contempla solo los comestibles, podemos notar que, el "pan de mantequilla y frijoles rojos" es el que presenta la mayor cantidad de ventas en todos los horarios, por lo que, sin importar el horario este producto será el que más se venda. Para poder obtener más información utilizaremos tablas. En primer lugar, analizaremos la tabla de ventas por hora de los bebestibles:
+Ambos gráficos contemplan un horario desde las 11:00 hasta las 17:00.
+Para el gráfico de los bebestibles se compararon todos los bebestibles
+para visualizar si el horario afecta. Podemos observar que a las 11:00
+el "café americano" es el que tiene más de la mitad de las ventas, pero
+a medida que el día finaliza, el porcentaje de "café americano" por hora
+disminuye. Por otro lado, en el gráfico que contempla solo los
+comestibles, podemos notar que, el "pan de mantequilla y frijoles rojos"
+es el que presenta la mayor cantidad de ventas en todos los horarios,
+por lo que, sin importar el horario este producto será el que más se
+venda. Para poder obtener más información utilizaremos tablas. En primer
+lugar, analizaremos la tabla de ventas por hora de los bebestibles:
 
 ```{r echo=FALSE}
 tbl_1
 ```
 
-La tabla nos verifica que el "café americano" va disminuyendo su porcentaje de ventas durante el día. Del resto no se puede concluir que el horario afecta a sus ventas. Ahora analicemos la tabla de ventas por hora de los comestibles:
+La tabla nos verifica que el "café americano" va disminuyendo su
+porcentaje de ventas durante el día. Del resto no se puede concluir que
+el horario afecta a sus ventas. Ahora analicemos la tabla de ventas por
+hora de los comestibles:
 
 ```{r echo=FALSE}
 tbl_2
 ```
 
-Podemos ver que el porcentaje del "Pan de mantequilla y frijoles rojos" tiene un porcentaje que no varía tanto durante el día, al igual que en el caso de los bebestibles, el resto no nos da información para concluir que el horario afecta en sus ventas.
+Podemos ver que el porcentaje del "Pan de mantequilla y frijoles rojos"
+tiene un porcentaje que no varía tanto durante el día, al igual que en
+el caso de los bebestibles, el resto no nos da información para concluir
+que el horario afecta en sus ventas.
 
 ## Conclusión
+
+Con los datos obtenidos a través del análisis realizado podemos
+contestar las preguntas propuestas:
+
+1.  ¿Cuáles son los alimentos preferidos?
+
+2.  ¿En qué días hay mayores ganancias?
+
+3.  ¿Cuál es el rango de horario en el que hay más pedidos?
+
+4.  ¿Qué relación hay entre los alimentos más vendidos y el horario?
+
+5.  ¿En qué horarios la gente prefiere productos dulces por sobre los
+    productos salados?
+
+Respondiendo a la primera pregunta, sabemos que el "Pan de mantequilla y
+frijoles rojos" es por lejos el producto más vendido junto a él "Café
+americano", el cual es el bebestible más vendido. Para la segunda
+pregunta tenemos que los días con mayor cantidad de solicitudes son los
+sábados y domingos, sin embargo, el día que genera mayor cantidad de
+ganancias por pedido es el viernes. En relación con el horario de los
+pedidos se tiene que, el horario donde hay más solicitudes es de 11:00 a
+14:00, lo que responde a la pregunta 3, para la pregunta 4 se concluye
+que no hay una relación entre el horario y el producto más vendido
+(tanto para comestibles como para bebestibles). Por último, no hay
+horario en donde la gente prefiera productos del tipo dulce por sobre el
+tipo salado, lo que responde a la pregunta 5.
+
+Con estos datos se pueden tomar muchas decisiones para hacer mejoras en
+la tienda. Estas decisiones pueden ser separadas en 2 grupos:
+
+1.   Cambios en los productos y promociones.
+
+2.  Cambios en el horario y personal.
+
+Para el primer grupo se pueden crear promociones para poder incentivar
+la venta de los productos menos populares como el "Tiramisú" o el
+"Cheese cake", por ejemplo, se puede vender el "Pan de mantequilla y
+frijoles rojos" junto a un "Tiramisú" por un precio menor al que saldría
+si se vendieran por separado. También se podría crear una promoción para
+potenciar al "Café americano" con el "Pan de mantequilla y frijoles
+rojos", para así atraer a más clientes a la tienda.
+
+Para el segundo grupo se tiene que a partir de las 18 horas no se
+generan solicitudes, por lo que, en vez de cerrar la tienda a las 23
+horas se podría cerrar antes, para destinar más horas a la mañana,
+horario en el que hay más solicitudes. También se puede realizar un
+cambio de horario en los turnos del personal o contratar a funcionarios
+de medio tiempo, para poder hacer frente a un aumento de solicitudes
+entre las 11 horas y las 14 horas.
+
+En esta pastelería se pueden tomar muchas decisiones con los datos
+obtenidos a través de los deliveries. Aun así, hay más tipos de datos
+que pueden ser recopilados a través de los deliveries, por ejemplo, una
+calificación al pedido para poder obtener información sobre la
+satisfacción del cliente, o incluso asignar un ID a los clientes para
+realizar promociones personalizadas y mantener su fidelidad con la
+tienda. Es por esto que los datos generados por los deliveries tiene una
+alta relevancia para las tiendas si es que se realiza un buen manejo e
+interpretación de los datos.
