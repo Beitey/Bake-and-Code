@@ -147,8 +147,8 @@ porcent = as.data.frame(cbind(dias_esp_ord, format(Porcentaje, digits = 2)))
 grafico_3 = porcent %>% ggplot() + 
   aes(x = factor(dias_esp_ord, level = dias_esp_ord), V2) +
   geom_bar(stat = "Identity", fill = "#03bac7") +
-  labs(title = "Promedio ponderado de Ganancias por Dia",
-       subtitle = "Ganancia en Wones Sur Coreanos",
+  labs(title = "Promedio ponderado de ganancias por día",
+       subtitle = "Ganancia en wones Sur Coreanos",
        y = "Monto ganado",
        x = "") +
   ggthemes::theme_base() +
@@ -192,7 +192,8 @@ grafico_4 = dat_h %>%
 grafico_5 = Vendidos_beb %>% ggplot() + 
   aes(x = reorder(V1, V1 ,function(x)+length(x))) + 
   geom_bar(fill = "#3F9E91") +
-  labs(title = "Número de ventas por producto bebestibles",
+  labs(title = "Número de ventas",
+       subtitle = "Productos bebestibles",
        y = "Número de ventas",
        x = "") + 
   coord_flip(xlim = NULL, ylim = NULL, expand = TRUE, clip = "on") +
@@ -202,7 +203,8 @@ grafico_5 = Vendidos_beb %>% ggplot() +
 grafico_6 = Vendidos_com %>% ggplot() + 
   aes(x = reorder(V1, V1 ,function(x)+length(x))) + 
   geom_bar(fill = "#3F9E91") +
-  labs(title = "Número de ventas por producto comestibles",
+  labs(title = "Número de ventas",
+       subtitle = "Productos bebestibles",
        y = "Número de ventas",
        x = "") + 
   coord_flip(xlim = NULL, ylim = NULL, expand = TRUE, clip = "on") +
