@@ -95,7 +95,7 @@ grafico_1 = dat  %>%
   geom_bar(stat = "count", fill = "#336688") +
   labs(title = "Número de ventas por días de la semana",
        y = "Número de Ventas",
-       x = "Días de la Semana")+ 
+       x = "") + 
   ggthemes::theme_base() +
   ggx::gg_("Center the title please")
 
@@ -108,7 +108,7 @@ grafico_2 = dat  %>%
   labs(title = "Ganancias por días de la semana",
        subtitle = "Ganancia en Wones Sur Coreanos",
        y = "Monto ganado",
-       x = "Días de la Semana") +
+       x = "") +
   ggthemes::theme_base() +
   theme(plot.subtitle = element_text(hjust = 0.5)) + 
   ggx::gg_("Center the title please") 
@@ -150,7 +150,7 @@ grafico_3 = porcent %>% ggplot() +
   labs(title = "Promedio ponderado de Ganancias por Dia",
        subtitle = "Ganancia en Wones Sur Coreanos",
        y = "Monto ganado",
-       x = "Días de la Semana") +
+       x = "") +
   ggthemes::theme_base() +
   theme(plot.subtitle = element_text(hjust = 0.5)) + 
   ggx::gg_("Center the title please") 
@@ -178,7 +178,7 @@ grafico_4 = dat_h %>%
   ggplot() +
   aes(x = Hora) +
   geom_bar(fill = "#6510a1") +
-  labs(title = "Cantidad de pedidos por Horario",
+  labs(title = "Cantidad de pedidos por horario",
        y = "Cantidad de pedidos",
        x = "Hora del día") +
   ggthemes::theme_base() + 
@@ -192,23 +192,21 @@ grafico_4 = dat_h %>%
 grafico_5 = Vendidos_beb %>% ggplot() + 
   aes(x = reorder(V1, V1 ,function(x)+length(x))) + 
   geom_bar(fill = "#3F9E91") +
-  labs(title = "Numero de ventas por Producto Bebestibles",
-       y = "Número de Ventas",
-       x = "Productos") + 
+  labs(title = "Número de ventas por producto bebestibles",
+       y = "Número de ventas",
+       x = "") + 
   coord_flip(xlim = NULL, ylim = NULL, expand = TRUE, clip = "on") +
-  ggthemes::theme_base() +
-  ggx::gg_("Center the title please")
+  ggthemes::theme_base()
 
 
 grafico_6 = Vendidos_com %>% ggplot() + 
   aes(x = reorder(V1, V1 ,function(x)+length(x))) + 
   geom_bar(fill = "#3F9E91") +
-  labs(title = "Numero de ventas por Producto Comestibles",
-       y = "Número de Ventas",
-       x = "Productos") + 
+  labs(title = "Número de ventas por producto comestibles",
+       y = "Número de ventas",
+       x = "") + 
   coord_flip(xlim = NULL, ylim = NULL, expand = TRUE, clip = "on") +
-  ggthemes::theme_base() +
-  ggx::gg_("Center the title please")
+  ggthemes::theme_base()
 
 # Dulce vs Salado
 
@@ -244,9 +242,9 @@ grafico_7 = dat_h %>%
   ggplot() +
   aes(x = Hora, fill = Tipo) +
   geom_bar() +
-  labs(title = "Pedidos por Horario",
+  labs(title = "Pedidos por horario",
        subtitle = "Separado por dulce o salado",
-       y = "Cantidad Pedida",
+       y = "Cantidad pedida",
        x = "Hora del día") +
   ggthemes::theme_base() +
   theme(plot.subtitle = element_text(hjust = 0.5)) + 
@@ -312,9 +310,9 @@ grafico_8 = dat_h %>% filter(!`Top Bebestible` == "No Aplica")%>%
   ggplot() +
   aes(x = Hora, fill = `Top Bebestible`) +
   geom_bar() +
-  labs(title = "Pedidos por Horario",
+  labs(title = "Pedidos por horario",
        subtitle = "Separado por bebestibles",
-       y = "Cantidad Pedida",
+       y = "Cantidad pedida",
        x = "Hora del día") +
   ggthemes::theme_base() +
   theme(plot.subtitle = element_text(hjust = 0.5)) + 
@@ -326,9 +324,9 @@ grafico_9 = dat_h %>% filter(!`Top Comestible`=="No Aplica") %>%
   ggplot() +
   aes(x = Hora, fill = `Top Comestible`) +
   geom_bar() +
-  labs(title = "Pedidos por Horario",
-       subtitle = "Separado por Top 5 Comestibles",
-       y = "Cantidad Pedida",
+  labs(title = "Pedidos por horario",
+       subtitle = "Separado por Top 5 comestibles",
+       y = "Cantidad pedida",
        x = "Hora del día") +
   ggthemes::theme_base() +
   theme(plot.subtitle = element_text(hjust = 0.5)) + 
