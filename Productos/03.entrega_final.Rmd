@@ -76,22 +76,12 @@ cuales podemos ver a continuación:
 [^1]: Base de datos obtenida de
     <https://www.kaggle.com/hosubjeong/bakery-sales>
 
-+-----------------+----------------------------------------------------+
-| Nombre de la    | Significado                                        |
-| Columna         |                                                    |
-+=================+====================================================+
-| datetime        | Fecha y hora del pedido.                           |
-+-----------------+----------------------------------------------------+
-| day of week     | Día de la semana.                                  |
-+-----------------+----------------------------------------------------+
-| total           | El monto total del pedido en wones sur-coreanos    |
-+-----------------+----------------------------------------------------+
-| 23 columnas de  | Estas corresponden a los productos, entre los      |
-| diferentes      | cuales podemos encontrar sándwiches, cafés, tés y  |
-| productos       | pasteles. Los valores de las columnas corresponden |
-|                 | a un número que indica cuantas unidades fueron     |
-|                 | solicitadas.                                       |
-+-----------------+----------------------------------------------------+
+| Nombre de la Columna                | Significado                                                                                                                                                                                                    |
+|-------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| datetime                            | Fecha y hora del pedido.                                                                                                                                                                                       |
+| day of week                         | Día de la semana.                                                                                                                                                                                              |
+| total                               | El monto total del pedido en wones sur-coreanos                                                                                                                                                                |
+| 23 columnas de diferentes productos | Estas corresponden a los productos, entre los cuales podemos encontrar sándwiches, cafés, tés y pasteles. Los valores de las columnas corresponden a un número que indica cuantas unidades fueron solicitadas. |
 
 : Columnas de datos
 
@@ -289,7 +279,7 @@ tipo salado, lo que responde a la pregunta 5.
 Con estos datos se pueden tomar muchas decisiones para hacer mejoras en
 la tienda. Estas decisiones pueden ser separadas en 2 grupos:
 
-1.   Cambios en los productos y promociones.
+1.  Cambios en los productos y promociones.
 
 2.  Cambios en el horario y personal.
 
